@@ -1,0 +1,19 @@
+rootProject.name = 'bio-sources'
+include ':bio-source-faw-scaffold'
+project(':bio-source-faw-scaffold').projectDir = new File(settingsDir, './faw-scaffold')
+include ':bio-source-faw-gene-gff'
+project(':bio-source-faw-gene-gff').projectDir = new File(settingsDir, './faw-gene-gff')
+include ':bio-source-faw-cds'
+project(':bio-source-faw-cds').projectDir = new File(settingsDir, './faw-cds')
+include ':bio-source-faw-protein'
+project(':bio-source-faw-protein').projectDir = new File(settingsDir, './faw-protein')
+include ':bio-source-faw-protein2ipr'
+project(':bio-source-faw-protein2ipr').projectDir = new File(settingsDir, './faw-protein2ipr')
+include ':bio-source-faw-kegg-pathway'
+project(':bio-source-faw-kegg-pathway').projectDir = new File(settingsDir, './faw-kegg-pathway')
+include ':bio-source-faw-gene-expression'
+project(':bio-source-faw-gene-expression').projectDir = new File(settingsDir, './faw-gene-expression')
+include ':bio-source-faw-homolog'
+project(':bio-source-faw-homolog').projectDir = new File(settingsDir, './faw-homolog')
+include ':bio-source-faw-network'
+project(':bio-source-faw-network').projectDir = new File(settingsDir, './faw-network')
