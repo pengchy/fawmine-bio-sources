@@ -9,6 +9,18 @@
 		<attribute name="annotationVersion" type="java.lang.String"/>
 		<attribute name="strainIdentifier" type="java.lang.String"/>
 	</class>
+	<class name="RNASeqResult" is-interface="true">
+		<attribute name="expressionScore" type="java.lang.Double"/>
+		<reference name="gene" referenced-type="Gene" reverse-reference="rnaSeqResults"/>
+		<attribute name="tissue" type="java.lang.String"/>
+		<attribute name="developmentalStage" type="java.lang.String"/>
+		<attribute name="phase" type="java.lang.String"/>
+		<attribute name="treatment" type="java.lang.String"/>
+		<attribute name="strain" type="java.lang.String"/>
+		<reference name="sample" referenced-type="Sample" reverse-reference="rnaSeqResults"/>
+		<collection name="dataSets" referenced-type="DataSet" />
+	</class>
+
 
 
 
