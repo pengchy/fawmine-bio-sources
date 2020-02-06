@@ -20,6 +20,46 @@
 		<reference name="sample" referenced-type="Sample" reverse-reference="rnaSeqResults"/>
 		<collection name="dataSets" referenced-type="DataSet" />
 	</class>
+	
+  <class name="Sample" extends="BioEntity" is-interface="true">
+		<attribute name="primaryCharacteristicType" type="java.lang.String"/>
+		<attribute name="materialType" type="java.lang.String"/>
+		<attribute name="primaryCharacteristic" type="java.lang.String"/>
+		<attribute name="description" type="java.lang.String"/>
+		<collection name="characteristics" referenced-type="SampleCharacteristic"/>
+		<collection name="treatments" referenced-type="Treatment"/>
+		<collection name="rnaSeqResults" referenced-type="RNASeqResult" reverse-reference="sample"/>
+		<reference name="publication" referenced-type="Publication"/>
+	</class>
+	
+	<class name="SampleCharacteristic" is-interface="true">
+		<attribute name="value" type="java.lang.String"/>
+		<attribute name="type" type="java.lang.String"/>
+		<reference name="ontologyTerm" referenced-type="OntologyTerm"/>
+	</class>
+	
+	<class name="Gene" extends="SequenceFeature" is-interface="true">
+		<collection name="rnaSeqResults" referenced-type="RNASeqResult" reverse-reference="gene"/>
+	</class>
+	
+	<class name="TreatmentParameter" is-interface="true">
+		<attribute name="value" type="java.lang.String"/>
+		<attribute name="type" type="java.lang.String"/>
+		<attribute name="units" type="java.lang.String"/>
+		<reference name="treatment" referenced-type="Treatment" reverse-reference="parameters"/>
+	</class>
+	
+	<class name="Treatment" is-interface="true">
+		<attribute name="action" type="java.lang.String"/>
+		<collection name="protocols" referenced-type="Protocol"/>
+		<collection name="parameters" referenced-type="TreatmentParameter" reverse-reference="treatment"/>
+	</class>
+
+	<class name="Protocol" is-interface="true">
+		<attribute name="name" type="java.lang.String"/>
+		<attribute name="description" type="java.lang.String"/>
+	</class>
+
 
 
 
