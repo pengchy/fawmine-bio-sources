@@ -17,3 +17,7 @@ include ':bio-source-faw-homolog'
 project(':bio-source-faw-homolog').projectDir = new File(settingsDir, './faw-homolog')
 include ':bio-source-faw-network'
 project(':bio-source-faw-network').projectDir = new File(settingsDir, './faw-network')
+include ':bio-source-faw-crossreference'
+project(':bio-source-faw-crossreference').projectDir = new File(settingsDir, './faw-crossreference')
+include ':bio-source-faw-vcf'
+project(':bio-source-faw-vcf').projectDir = new File(settingsDir, './faw-vcf')

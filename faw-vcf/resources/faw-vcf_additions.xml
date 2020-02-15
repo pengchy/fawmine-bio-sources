@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
+
+<classes>
+	<class name="SequenceAlteration" extends="SequenceFeature" is-interface="true">
+		<attribute name="variantSequence" type="java.lang.String"/>
+		<attribute name="referenceSequence" type="java.lang.String"/>
+		<attribute name="type" type="java.lang.String"/>
+		<attribute name="uniqueLocation" type="java.lang.Boolean"/>
+		<attribute name="positionOnGene" type="java.lang.String"/>
+		<attribute name="AD" type="java.lang.Double"/>
+		<attribute name="DP" type="java.lang.Double"/>
+		<attribute name="GQ" type="java.lang.Double"/>
+		<attribute name="GT" type="java.lang.Double"/>
+		<attribute name="PGT" type="java.lang.Double"/>
+		<attribute name="PID" type="java.lang.Double"/>
+		<attribute name="PL" type="java.lang.Double"/>
+		<attribute name="AC" type="java.lang.Double"/>
+		<attribute name="AF" type="java.lang.Double"/>
+		<attribute name="AN" type="java.lang.Double"/>
+		<attribute name="allelQuality" type="java.lang.Double"/>
+		<attribute name="baseQRankSum" type="java.lang.Double"/>
+		<attribute name="clippingRankSum" type="java.lang.Double"/>
+		<attribute name="excessHet" type="java.lang.Double"/>
+		<attribute name="FS" type="java.lang.Double"/>
+		<attribute name="inbreedingCoeff" type="java.lang.Double"/>
+		<attribute name="MLEAC" type="java.lang.Double"/>
+		<attribute name="MLEAF" type="java.lang.Double"/>
+		<attribute name="MQ" type="java.lang.Double"/>
+		<attribute name="MQRankSum" type="java.lang.Double"/>
+		<attribute name="QD" type="java.lang.Double"/>
+		<attribute name="readPosRankSum" type="java.lang.Double"/>
+		<attribute name="SOR" type="java.lang.Double"/>
+		<attribute name="relatviePositionToGene" type="java.lang.Double"/>
+		<reference name="geneDetail" referenced-type="Gene" reverse-reference="sequenceAlterations"/>
+		<attribute name="relatviePositionToGene2" type="java.lang.Double"/>
+		<reference name="geneDetail2" referenced-type="Gene"/>
+		<attribute name="exonicFunction" type="java.lang.String"/>
+		<attribute name="aAChange" type="java.lang.String"/>
+		<collection name="validations" referenced-type="ValidationState" />
+		<collection name="consequences" referenced-type="Consequence" reverse-reference="snp"/>
+	</class>
+	
+	<class name="GeneticMarker" extends="SequenceAlteration" is-interface="true"/>
+	<class name="Indel" extends="SequenceAlteration" is-interface="true"/>
+	<class name="Deletion" extends="SequenceAlteration" is-interface="true"/>
+	<class name="Insertion" extends="SequenceAlteration" is-interface="true"/>
+	<class name="SNV" extends="SequenceAlteration" is-interface="true"/>
+	<class name="Substitution" extends="SequenceAlteration" is-interface="true"/>
+	
+	<!-- this is just a sequence feature, not an alteration -->
+	<class name="TandemRepeat" extends="SequenceAlteration" is-interface="true"/>
+	<class name="ValidationState" is-interface="true">
+		<attribute name="name" type="java.lang.String"/>
+	</class>
+	
+	<class name="Consequence" is-interface="false" extends="java.lang.Object">
+		<attribute name="description" type="java.lang.String"/>
+		<attribute name="peptideAlleles" type="java.lang.String"/>
+		<attribute name="polyphenPrediction" type="java.lang.String"/>
+		<attribute name="polyphenScore" type="java.lang.Double"/>
+		<attribute name="siftPrediction" type="java.lang.String"/>
+		<attribute name="siftScore" type="java.lang.Double"/>
+		<reference name="transcript" referenced-type="Transcript"/>
+		<reference name="snp" referenced-type="SequenceAlteration" reverse-reference="consequences"/>
+		<!-- <collection name="types" referenced-type="ConsequenceType"/> -->
+	</class>
+	
+	<class name="ConsequenceType" is-interface="true">
+		<attribute name="type" type="java.lang.String"/>
+	</class>
+	
+	<class name="Transcript" extends="SequenceFeature" is-interface="true"/>
+	<class name="Gene" extends="SequenceFeature" is-interface="true">
+		<collection name="sequenceAlterations" referenced-type="SequenceAlteration" reverse-reference="geneDetail"/>
+	</class>
+</classes>
+
